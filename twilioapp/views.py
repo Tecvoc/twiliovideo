@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 import os
 from twilio.access_token import AccessToken
+from django.http.response import JsonResponse
 import random
 
 
@@ -31,4 +32,4 @@ def get_token(request):
     # token.add_grant(grant)
 
     # Return token info as JSON
-    return jsonify(identity=token.identity, token=token.to_jwt())
+    return JsonResponse({"identity": token.identity, "token" : token.to_jwt()})
